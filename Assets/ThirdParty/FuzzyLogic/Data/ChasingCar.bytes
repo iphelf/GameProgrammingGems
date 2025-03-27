@@ -1,0 +1,262 @@
+´ÕÔ4Vxê{
+    "fuzzifications": [
+        {
+            "_division": 10,
+            "_maxValue": 4,
+            "_guid": "24cfd95c-7cc8-4325-92be-d6f6b60d86e7",
+            "_name": "Distance",
+            "_value": 0.0,
+            "trapezoids": [
+                {
+                    "_guid": "91c8a3e7-b0cb-48b9-a51a-16938cf7ddac",
+                    "_color": {
+                        "r": 1.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 1.0
+                    },
+                    "_name": "Very Small",
+                    "_peakPointLeftValue": 0.0,
+                    "_footPointLeftValue": 0.0,
+                    "_peakPointRightValue": 0.0,
+                    "_footPointRightValue": 1.0
+                },
+                {
+                    "_guid": "80c11746-1ae4-4cbb-8a1f-c1eded78f798",
+                    "_color": {
+                        "r": 0.821099042892456,
+                        "g": 0.44595736265182497,
+                        "b": 0.1921772062778473,
+                        "a": 1.0
+                    },
+                    "_name": "Small",
+                    "_peakPointLeftValue": 1.0,
+                    "_footPointLeftValue": 0.0,
+                    "_peakPointRightValue": 1.0,
+                    "_footPointRightValue": 2.0
+                },
+                {
+                    "_guid": "9f9043f8-4e9e-400f-9660-1a60aa2a671f",
+                    "_color": {
+                        "r": 0.15175224840641023,
+                        "g": 0.6220714449882507,
+                        "b": 0.28345218300819399,
+                        "a": 1.0
+                    },
+                    "_name": "Perfect",
+                    "_peakPointLeftValue": 2.0,
+                    "_footPointLeftValue": 1.0,
+                    "_peakPointRightValue": 2.0,
+                    "_footPointRightValue": 3.0
+                },
+                {
+                    "_guid": "a05b345d-1eca-4c92-92ea-f73cb30b7599",
+                    "_color": {
+                        "r": 0.8196078538894653,
+                        "g": 0.4470588266849518,
+                        "b": 0.1921568661928177,
+                        "a": 1.0
+                    },
+                    "_name": "Big",
+                    "_peakPointLeftValue": 3.0,
+                    "_footPointLeftValue": 2.0,
+                    "_peakPointRightValue": 3.0,
+                    "_footPointRightValue": 4.0
+                },
+                {
+                    "_guid": "bb7e9c46-5499-4065-93ef-f75bbed5ee07",
+                    "_color": {
+                        "r": 1.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 1.0
+                    },
+                    "_name": "Very Big",
+                    "_peakPointLeftValue": 4.0,
+                    "_footPointLeftValue": 3.0,
+                    "_peakPointRightValue": 4.0,
+                    "_footPointRightValue": 4.0
+                }
+            ]
+        },
+        {
+            "_division": 10,
+            "_maxValue": 4,
+            "_guid": "fd81dcfc-b0ed-4f99-b7d0-7551c2425d6a",
+            "_name": "Distance Delta",
+            "_value": 0.0,
+            "trapezoids": [
+                {
+                    "_guid": "15da4143-ed1b-477e-8b56-919772702d76",
+                    "_color": {
+                        "r": 1.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 1.0
+                    },
+                    "_name": "Shrinking Fast",
+                    "_peakPointLeftValue": 0.0,
+                    "_footPointLeftValue": 0.0,
+                    "_peakPointRightValue": 0.0,
+                    "_footPointRightValue": 1.0
+                },
+                {
+                    "_guid": "0b3feb10-34bc-4afd-9a0d-572f34050e2e",
+                    "_color": {
+                        "r": 0.8196078538894653,
+                        "g": 0.4470588266849518,
+                        "b": 0.1921568661928177,
+                        "a": 1.0
+                    },
+                    "_name": "Shrinking",
+                    "_peakPointLeftValue": 1.0,
+                    "_footPointLeftValue": 0.0,
+                    "_peakPointRightValue": 1.0,
+                    "_footPointRightValue": 2.0
+                },
+                {
+                    "_guid": "a5cdb992-bb65-4632-844c-1d863c3bbc06",
+                    "_color": {
+                        "r": 0.15294118225574494,
+                        "g": 0.6235294342041016,
+                        "b": 0.2823529541492462,
+                        "a": 1.0
+                    },
+                    "_name": "Stable",
+                    "_peakPointLeftValue": 2.0,
+                    "_footPointLeftValue": 1.0,
+                    "_peakPointRightValue": 2.0,
+                    "_footPointRightValue": 3.0
+                },
+                {
+                    "_guid": "7f79c8db-f1f0-4562-a90f-d633182b7f43",
+                    "_color": {
+                        "r": 0.8196078538894653,
+                        "g": 0.4470588266849518,
+                        "b": 0.1921568661928177,
+                        "a": 1.0
+                    },
+                    "_name": "Growing",
+                    "_peakPointLeftValue": 3.0,
+                    "_footPointLeftValue": 2.0,
+                    "_peakPointRightValue": 3.0,
+                    "_footPointRightValue": 4.0
+                },
+                {
+                    "_guid": "1268b131-8148-45cc-b7c8-ec05ebac5d1f",
+                    "_color": {
+                        "r": 1.0,
+                        "g": 0.0,
+                        "b": 0.0,
+                        "a": 1.0
+                    },
+                    "_name": "Growing Fast",
+                    "_peakPointLeftValue": 4.0,
+                    "_footPointLeftValue": 3.0,
+                    "_peakPointRightValue": 4.0,
+                    "_footPointRightValue": 4.0
+                }
+            ]
+        }
+    ],
+    "_defuzzitication": {
+        "_division": 10,
+        "_maxValue": 2,
+        "_guid": "0f814b84-a3c5-44d7-bd39-b162ae3ab63f",
+        "_name": "Action",
+        "_value": 0.0,
+        "trapezoids": [
+            {
+                "_guid": "949f005e-0aaa-4392-b493-2e1fc69356d3",
+                "_color": {
+                    "r": 1.0,
+                    "g": 0.0,
+                    "b": 0.0,
+                    "a": 1.0
+                },
+                "_name": "Brake Hard",
+                "_peakPointLeftValue": 0.5,
+                "_footPointLeftValue": 0.5,
+                "_peakPointRightValue": 0.5,
+                "_footPointRightValue": 0.75
+            },
+            {
+                "_guid": "119f1443-b463-4db3-b81a-87ca1d2b592a",
+                "_color": {
+                    "r": 0.9921360015869141,
+                    "g": 0.5014309287071228,
+                    "b": 0.46045273542404177,
+                    "a": 1.0
+                },
+                "_name": "Slow Down",
+                "_peakPointLeftValue": 0.75,
+                "_footPointLeftValue": 0.5,
+                "_peakPointRightValue": 0.75,
+                "_footPointRightValue": 1.0
+            },
+            {
+                "_guid": "afba07d0-ca8f-482e-a051-12ac3912a074",
+                "_color": {
+                    "r": 0.07279384881258011,
+                    "g": 0.9196946620941162,
+                    "b": 0.8864195346832275,
+                    "a": 1.0
+                },
+                "_name": "Maintain Speed",
+                "_peakPointLeftValue": 1.0,
+                "_footPointLeftValue": 0.75,
+                "_peakPointRightValue": 1.0,
+                "_footPointRightValue": 1.5
+            },
+            {
+                "_guid": "8606bc5d-6204-416d-89fa-05fc0cab7e82",
+                "_color": {
+                    "r": 0.8925409317016602,
+                    "g": 0.012672306969761849,
+                    "b": 0.9915755987167358,
+                    "a": 1.0
+                },
+                "_name": "Speed Up",
+                "_peakPointLeftValue": 1.5,
+                "_footPointLeftValue": 1.0,
+                "_peakPointRightValue": 1.5,
+                "_footPointRightValue": 2.0
+            },
+            {
+                "_guid": "04ae3bcd-f810-401b-8df0-daa03ef237f8",
+                "_color": {
+                    "r": 0.0,
+                    "g": 1.0,
+                    "b": 0.0,
+                    "a": 1.0
+                },
+                "_name": "Floor it",
+                "_peakPointLeftValue": 2.0,
+                "_footPointLeftValue": 1.5,
+                "_peakPointRightValue": 2.0,
+                "_footPointRightValue": 2.0
+            }
+        ],
+        "_subdivision": 20
+    },
+    "inferences": [
+        {
+            "_guid": "fd17b3fd-4315-4859-827e-b7a85329ef18",
+            "_name": "",
+            "_leftSideInputGUID": "91c8a3e7-b0cb-48b9-a51a-16938cf7ddac",
+            "_rightSideInputGUID": "15da4143-ed1b-477e-8b56-919772702d76",
+            "_outputGUID": "949f005e-0aaa-4392-b493-2e1fc69356d3",
+            "_op": 1
+        },
+        {
+            "_guid": "92e90466-58b5-4a60-8342-6a407321093b",
+            "_name": "",
+            "_leftSideInputGUID": "91c8a3e7-b0cb-48b9-a51a-16938cf7ddac",
+            "_rightSideInputGUID": "0b3feb10-34bc-4afd-9a0d-572f34050e2e",
+            "_outputGUID": "119f1443-b463-4db3-b81a-87ca1d2b592a",
+            "_op": 1
+        }
+    ],
+    "_guid": "a21ecdae-8268-463f-92d6-39d62f8c1649",
+    "_name": "ChasingCar"
+}

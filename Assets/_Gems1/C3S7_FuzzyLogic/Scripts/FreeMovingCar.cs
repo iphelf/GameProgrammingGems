@@ -27,5 +27,10 @@ namespace _Gems1.C3S7_FuzzyLogic.Scripts
 		{
 			return _Speed;
 		}
+
+		internal override float GetPosition()
+		{
+			return transform.position.x;
+		}
 	}
 }

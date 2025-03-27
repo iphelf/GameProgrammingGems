@@ -569,6 +569,7 @@ MonoBehaviour:
   _TargetCar: {fileID: 410095850}
   _ChasingCarSpeed: 13
   _TargetCarSpeed: 13
+  _InferTimeSpan: 1
 --- !u!1 &1662532857
 GameObject:
   m_ObjectHideFlags: 0
