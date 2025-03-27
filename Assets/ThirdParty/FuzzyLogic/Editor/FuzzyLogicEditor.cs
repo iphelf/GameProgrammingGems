@@ -10,7 +10,7 @@ namespace FuzzyLogicSystem.Editor
 {
     public class FuzzyLogicEditor : EditorWindow
     {
-        public const string PERSISTENT_DATA_PATH = "Assets/FuzzyLogic/Data/";
+        public const string PERSISTENT_DATA_PATH = "Assets/ThirdParty/FuzzyLogic/Data/";
 
         public const string DEFAULT = "default.bytes";
 
