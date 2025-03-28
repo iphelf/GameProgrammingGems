@@ -6,12 +6,14 @@ namespace _Gems1.C3S7_Flocking.Scripts
 	internal class BoidShip : ShipBase
 	{
 		protected override float _MaxSpeed => _Config.MaxSpeed;
+		protected override float _MaxAcceleration => _Config.MaxAcceleration;
 
 		[Serializable]
 		internal class Config
 		{
 			public Transform Target;
 			public float MaxSpeed = 3.73f;
+			public float MaxAcceleration = 1;
 			public float WeightOfSeparation = 1;
 			public float WeightOfAlignment = 1;
 			public float WeightOfCohesion = 1;
@@ -26,10 +28,12 @@ namespace _Gems1.C3S7_Flocking.Scripts
 			_Config = config;
 		}
 
-		private void Update()
+		protected override void Update()
 		{
 			var movementInput = _SolveConstraints();
-			HandleMovementInput(movementInput);
+			TickAccelerationInput(movementInput);
+
+			base.Update();
 		}
 
 		private Vector3 _SolveConstraints()

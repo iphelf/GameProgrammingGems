@@ -19,7 +19,7 @@ namespace _Gems1.C3S7_Flocking.Scripts
 		private void Update()
 		{
 			var movement = _InputMoveAction.ReadValue<Vector2>();
-			_PlayerShip.HandleMovementInput(new Vector3(movement.x, movement.y, 0));
+			_PlayerShip.TickAccelerationInput(new Vector3(movement.x, movement.y, 0));
 		}
 	}
 }
