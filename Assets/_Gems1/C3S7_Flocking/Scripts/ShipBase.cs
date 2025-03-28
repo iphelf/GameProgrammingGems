@@ -1,4 +1,5 @@
-﻿using NaughtyAttributes;
+﻿using JetBrains.Annotations;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace _Gems1.C3S7_Flocking.Scripts
@@ -7,9 +8,13 @@ namespace _Gems1.C3S7_Flocking.Scripts
 	{
 		protected abstract float _MaxSpeed { get; }
 		protected abstract float _MaxAcceleration { get; }
+		internal Vector3 Direction => transform.up;
+		internal Vector3 Position => transform.position;
 
 		[SerializeField, ReadOnly] private Vector3 _CurrentSpeed;
-		[SerializeField, ReadOnly] private float _CurrentSpeedMagnitude;
+
+		[SerializeField, ReadOnly, UsedImplicitly]
+		private float _CurrentSpeedMagnitude;
 
 		protected virtual void Update()
 		{
@@ -52,7 +57,7 @@ namespace _Gems1.C3S7_Flocking.Scripts
 				return;
 			}
 
-			_CurrentSpeed = _CurrentSpeed * ((currentSpeedMagnitude - speedAttenuation) / currentSpeedMagnitude);
+			_CurrentSpeed *= (currentSpeedMagnitude - speedAttenuation) / currentSpeedMagnitude;
 		}
 
 		private void _TickDebugInfo()

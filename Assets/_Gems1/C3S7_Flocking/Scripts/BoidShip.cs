@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Gems1.C3S7_Flocking.Scripts
 {
@@ -12,9 +16,9 @@ namespace _Gems1.C3S7_Flocking.Scripts
 		[Serializable]
 		internal class Config
 		{
-			[Header("Global")] public Transform Target;
-			public float MaxSpeed = 3.73f;
-			public float MaxAcceleration = 1;
+			[Header("Global")] public ShipBase Target;
+			public float MaxSpeed = 3.7f;
+			public float MaxAcceleration = 8;
 
 			[Header("Accumulation weights")] public float WeightOfSeparation = 1;
 			public float WeightOfAlignment = 0.5f;
@@ -24,49 +28,65 @@ namespace _Gems1.C3S7_Flocking.Scripts
 			[Header("Separation")] public float SeparationRange = 0.5f;
 			[Header("Alignment")] public float AlignmentRange = 0.5f;
 			[Header("Cohesion")] public float CohesionRange = 1.5f;
+			public float CohesionWeightOfLeader = 10.0f;
+			public float CohesionWeightOfMember = 1.0f;
 		}
 
 		private Config _Config;
 
-		[SerializeField, ReadOnly] private float _TargetDistance;
+		[SerializeField, ReadOnly, UsedImplicitly]
+		private float _TargetDistance;
 
 		internal void Init(Config config)
 		{
 			_Config = config;
 		}
 
+		private void Start()
+		{
+			transform.position += Random.insideUnitSphere * 0.1f;
+		}
+
 		protected override void Update()
 		{
-			var movementInput = _SolveConstraints();
-			TickAccelerationInput(movementInput);
-
 			base.Update();
 
 			_TickDebugInfo();
 		}
 
-		private Vector3 _SolveConstraints()
+		internal void TickConstraintsSolver(IReadOnlyList<ShipBase> vicinity)
 		{
-			if ((_Config.Target.position - transform.position).magnitude > _Config.PerceptionRange)
+			var movementInput = _SolveConstraints(vicinity);
+			TickAccelerationInput(movementInput);
+		}
+
+		private Vector3 _SolveConstraints(IReadOnlyList<ShipBase> vicinity)
+		{
+			var change = Vector3.zero;
+			if (vicinity.Count == 0)
 			{
-				return Vector3.zero;
+				return change;
 			}
 
-			var change = Vector3.zero;
-			change += _SolveSeparationConstraint() * _Config.WeightOfSeparation;
-			change += _SolveAlignmentConstraint() * _Config.WeightOfAlignment;
-			change += _SolveCohesionConstraint() * _Config.WeightOfCohesion;
+			change += _SolveSeparationConstraint(vicinity) * _Config.WeightOfSeparation;
+			change += _SolveAlignmentConstraint(vicinity) * _Config.WeightOfAlignment;
+			change += _SolveCohesionConstraint(vicinity) * _Config.WeightOfCohesion;
 			return change.normalized;
 		}
 
-		private Vector3 _SolveSeparationConstraint()
+		private Vector3 _SolveSeparationConstraint(IReadOnlyList<ShipBase> vicinity)
 		{
 			var change = Vector3.zero;
 
-			var translation = _Config.Target.position - transform.position;
-			var distance = translation.magnitude;
-			if (distance < _Config.SeparationRange)
+			foreach (var ship in vicinity)
 			{
+				var translation = ship.Position - Position;
+				var distance = translation.magnitude;
+				if (distance >= _Config.SeparationRange)
+				{
+					continue;
+				}
+
 				var separationAcc = _Config.SeparationRange / Mathf.Max(distance, 0.01f);
 				separationAcc = Mathf.Min(separationAcc, 1.0f);
 				change -= translation.normalized * separationAcc;
@@ -75,20 +95,30 @@ namespace _Gems1.C3S7_Flocking.Scripts
 			return change;
 		}
 
-		private Vector3 _SolveAlignmentConstraint()
+		private Vector3 _SolveAlignmentConstraint(IReadOnlyList<ShipBase> vicinity)
 		{
-			if (Vector3.Dot(_Config.Target.up, transform.up) > _Config.AlignmentRange)
+			if (Vector3.Dot(_Config.Target.Direction, Direction) > _Config.AlignmentRange)
 			{
 				return Vector3.zero;
 			}
 
-			var dirDiff = _Config.Target.up - transform.up;
+			var dirDiff = _Config.Target.Direction - Direction;
 			return Vector3.ClampMagnitude(dirDiff, 1.0f);
 		}
 
-		private Vector3 _SolveCohesionConstraint()
+		private Vector3 _SolveCohesionConstraint(IReadOnlyList<ShipBase> vicinity)
 		{
-			var translation = _Config.Target.position - transform.position;
+			var vicinityCenter = Vector3.zero;
+			var totalWeight = 0.0f;
+			foreach (var ship in vicinity)
+			{
+				var weight = ship is PlayerShip ? _Config.CohesionWeightOfLeader : _Config.CohesionWeightOfMember;
+				vicinityCenter += ship.Position * weight;
+				totalWeight += weight;
+			}
+
+			vicinityCenter /= totalWeight;
+			var translation = vicinityCenter - Position;
 			var distance = translation.magnitude;
 			if (distance <= _Config.CohesionRange)
 			{
@@ -101,7 +131,7 @@ namespace _Gems1.C3S7_Flocking.Scripts
 
 		private void _TickDebugInfo()
 		{
-			_TargetDistance = (_Config.Target.position - transform.position).magnitude;
+			_TargetDistance = (_Config.Target.Position - Position).magnitude;
 		}
 	}
 }

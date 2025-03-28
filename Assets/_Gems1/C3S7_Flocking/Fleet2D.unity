@@ -1545,9 +1545,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _BoidShipConfig:
-    Target: {fileID: 316063706}
-    MaxSpeed: 3.73
-    MaxAcceleration: 1
+    Target: {fileID: 316063707}
+    MaxSpeed: 3.7
+    MaxAcceleration: 8
     WeightOfSeparation: 1
     WeightOfAlignment: 0.5
     WeightOfCohesion: 1
@@ -1555,6 +1555,8 @@ MonoBehaviour:
     SeparationRange: 0.5
     AlignmentRange: 0.5
     CohesionRange: 1
+    CohesionWeightOfLeader: 10
+    CohesionWeightOfMember: 1
   _BoidShips:
   - {fileID: 1254864464}
   - {fileID: 1551971104}
