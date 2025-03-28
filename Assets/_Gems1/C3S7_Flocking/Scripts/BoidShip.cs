@@ -5,13 +5,17 @@ namespace _Gems1.C3S7_Flocking.Scripts
 {
 	internal class BoidShip : ShipBase
 	{
+		protected override float _MaxSpeed => _Config.MaxSpeed;
+
 		[Serializable]
 		internal class Config
 		{
 			public Transform Target;
+			public float MaxSpeed = 3.73f;
 			public float WeightOfSeparation = 1;
 			public float WeightOfAlignment = 1;
 			public float WeightOfCohesion = 1;
+			public float PerceptionRange = 2;
 			public float CohesionRange = 1;
 		}
 
@@ -24,38 +28,35 @@ namespace _Gems1.C3S7_Flocking.Scripts
 
 		private void Update()
 		{
-			var movementInput = _Solve();
+			var movementInput = _SolveConstraints();
 			HandleMovementInput(movementInput);
 		}
 
-		private Vector3 _Solve()
+		private Vector3 _SolveConstraints()
 		{
+			if ((_Config.Target.position - transform.position).magnitude > _Config.PerceptionRange)
+			{
+				return Vector3.zero;
+			}
+
 			var change = Vector3.zero;
-			float totalWeight = 0;
-			change += _SolveSeparation() * _Config.WeightOfSeparation;
-			totalWeight += _Config.WeightOfSeparation;
-			change += _SolveAlignment() * _Config.WeightOfAlignment;
-			totalWeight += _Config.WeightOfAlignment;
-			change += _SolveCohesion() * _Config.WeightOfCohesion;
-			totalWeight += _Config.WeightOfCohesion;
-			change /= totalWeight;
-			return change;
+			change += _SolveSeparationConstraint() * _Config.WeightOfSeparation;
+			change += _SolveAlignmentConstraint() * _Config.WeightOfAlignment;
+			change += _SolveCohesionConstraint() * _Config.WeightOfCohesion;
+			return change.normalized;
 		}
 
-		// Separation
-		private Vector3 _SolveSeparation()
+		private Vector3 _SolveSeparationConstraint()
 		{
 			return Vector3.zero;
 		}
 
-		// Alignment
-		private Vector3 _SolveAlignment()
+		private Vector3 _SolveAlignmentConstraint()
 		{
 			return Vector3.zero;
 		}
 
-		// Cohesion
-		private Vector3 _SolveCohesion()
+		private Vector3 _SolveCohesionConstraint()
 		{
 			var translation = _Config.Target.position - transform.position;
 			var distance = translation.magnitude;

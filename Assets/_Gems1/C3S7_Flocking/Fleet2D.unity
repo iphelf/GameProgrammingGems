@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9257fa131434495ea8eef94deab699c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 5
+  _MaxMoveSpeed: 5
 --- !u!1 &830298658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,9 +1529,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BoidShipConfig:
     Target: {fileID: 316063706}
+    MaxSpeed: 3.73
     WeightOfSeparation: 1
     WeightOfAlignment: 1
     WeightOfCohesion: 1
+    PerceptionRange: 2
+    CohesionRange: 1
   _BoidShips:
   - {fileID: 1254864464}
   - {fileID: 1551971104}

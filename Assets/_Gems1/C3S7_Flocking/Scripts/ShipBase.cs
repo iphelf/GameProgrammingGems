@@ -2,13 +2,13 @@
 
 namespace _Gems1.C3S7_Flocking.Scripts
 {
-	internal class ShipBase : MonoBehaviour
+	internal abstract class ShipBase : MonoBehaviour
 	{
-		public float MaxSpeed = 5.0f;
+		protected abstract float _MaxSpeed { get; }
 
 		internal void HandleMovementInput(Vector3 movementInput)
 		{
-			var movementSpeed = movementInput * MaxSpeed;
+			var movementSpeed = movementInput * _MaxSpeed;
 			var movementTranslation = movementSpeed * Time.deltaTime;
 			transform.position += movementTranslation;
 
