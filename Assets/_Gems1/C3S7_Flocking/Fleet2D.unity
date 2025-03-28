@@ -1551,7 +1551,8 @@ MonoBehaviour:
     WeightOfSeparation: 1
     WeightOfAlignment: 1
     WeightOfCohesion: 1
-    PerceptionRange: 2
+    PerceptionRange: 5
+    SeparationRange: 0.5
     CohesionRange: 1
   _BoidShips:
   - {fileID: 1254864464}
