@@ -17,11 +17,12 @@ namespace _Gems1.C3S7_Flocking.Scripts
 			public float MaxAcceleration = 1;
 
 			[Header("Accumulation weights")] public float WeightOfSeparation = 1;
-			public float WeightOfAlignment = 1;
+			public float WeightOfAlignment = 0.5f;
 			public float WeightOfCohesion = 1;
 
 			[Header("Perception")] public float PerceptionRange = 2;
 			[Header("Separation")] public float SeparationRange = 0.5f;
+			[Header("Alignment")] public float AlignmentRange = 0.5f;
 			[Header("Cohesion")] public float CohesionRange = 1.5f;
 		}
 
@@ -76,7 +77,13 @@ namespace _Gems1.C3S7_Flocking.Scripts
 
 		private Vector3 _SolveAlignmentConstraint()
 		{
-			return Vector3.zero;
+			if (Vector3.Dot(_Config.Target.up, transform.up) > _Config.AlignmentRange)
+			{
+				return Vector3.zero;
+			}
+
+			var dirDiff = _Config.Target.up - transform.up;
+			return Vector3.ClampMagnitude(dirDiff, 1.0f);
 		}
 
 		private Vector3 _SolveCohesionConstraint()

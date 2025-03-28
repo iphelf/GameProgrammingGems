@@ -1549,10 +1549,11 @@ MonoBehaviour:
     MaxSpeed: 3.73
     MaxAcceleration: 1
     WeightOfSeparation: 1
-    WeightOfAlignment: 1
+    WeightOfAlignment: 0.5
     WeightOfCohesion: 1
     PerceptionRange: 5
     SeparationRange: 0.5
+    AlignmentRange: 0.5
     CohesionRange: 1
   _BoidShips:
   - {fileID: 1254864464}
