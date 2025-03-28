@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
@@ -44,7 +43,8 @@ namespace _Gems1.C3S7_Flocking.Scripts
 
 		private void Start()
 		{
-			transform.position += Random.insideUnitSphere * 0.1f;
+			var initialOffset = Random.insideUnitCircle * 0.1f;
+			transform.position += new Vector3(initialOffset.x, initialOffset.y, 0);
 		}
 
 		protected override void Update()
